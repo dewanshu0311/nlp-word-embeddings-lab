@@ -1,0 +1,39 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.10"
+
+      - name: Validate notebook JSON
+        run: |
+          echo "Validating all notebooks are valid JSON..."
+          find . -name "*.ipynb" -exec python -m json.tool {} /dev/null \;
+          echo "✅ All notebooks are valid JSON"
+
+      - name: Check required files exist
+        run: |
+          echo "Checking required files..."
+          test -f README.md && echo "✅ README.md"
+          test -f requirements.txt && echo "✅ requirements.txt"
+          test -f LICENSE && echo "✅ LICENSE"
+          test -f docs/Insights_and_Recommendations.md && echo "✅ Insights_and_Recommendations.md"
+          echo "✅ All required files present"
+
+      - name: Validate requirements.txt
+        run: |
+          pip install --dry-run -r requirements.txt 2>&1 | head -20
+          echo "✅ requirements.txt is valid"

@@ -1,12 +1,16 @@
-# Lab 3: Sentiment Classification using Embeddings
+# 🎯 Lab 4: Sentiment Classification with Embeddings
 
 ## Objective
-In this lab, we use text embeddings as input features to train a classical machine learning model for sentiment classification.
 
-We use:
-- IMDB movie reviews dataset
-- Gemini embedding model
-- XGBoost classifier
+Use text embeddings as input features to train a classical machine learning model for **sentiment classification** on the IMDB movie reviews dataset.
+
+## Key Concepts
+
+- Embeddings as ML features — converting text to fixed-length vectors
+- IMDB movie reviews dataset (50,000 reviews, binary sentiment)
+- XGBoost classifier trained on Gemini embedding vectors
+- Model evaluation using accuracy, precision, recall, F1-score
+- Custom prediction on user-input reviews
 
 ## Steps Performed
 
@@ -17,12 +21,17 @@ We use:
 5. Evaluate the model using accuracy and classification report
 6. Test the model on custom user inputs
 
-## Key Learning
+## Key Finding
 
-- Embeddings can be used as powerful features for traditional ML models
-- Even simple classifiers perform extremely well with good embeddings
-- This approach is commonly used in production NLP systems
+> Even simple classifiers (XGBoost) perform extremely well when powered by high-quality Gemini embeddings. This approach is commonly used in production NLP systems where speed and interpretability matter.
 
-## Files
+## How to Run
 
-- `lab3_sentiment_classification.ipynb` → Full implementation notebook
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/dewanshu0311/nlp-word-embeddings-lab/blob/main/04-sentiment-classification/lab4_sentiment_classification.ipynb)
+
+## Technologies
+
+- Google Gemini API (`text-embedding-004`)
+- XGBoost
+- scikit-learn
+- pandas, NumPy
